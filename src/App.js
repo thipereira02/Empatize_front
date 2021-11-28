@@ -5,6 +5,7 @@ import GlobalStyle from "./layouts/GlobalStyles";
 import HomePage from "./pages/HomePage";
 
 export default function App() {
+	
 
 	return (
 		<>
