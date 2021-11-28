@@ -1,6 +1,8 @@
 import React from "react";
 import { useLocation } from "react-router";
 import styled from "styled-components";
+import { FaPlay } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function WhatDoYou() {
 	const location = useLocation();
@@ -9,7 +11,7 @@ export default function WhatDoYou() {
 	return (
 		<Body>
 			<Title>
-				O que você {page}:
+				O que você <span>{page}</span>:
 			</Title>
 			<Question>
 				Quando você vai deixar essa fase e voltar a ser meu filho?
@@ -32,6 +34,12 @@ seu chefe, impedindo sua promoção</p>
 			<Question>
 				Quando você vai deixar essa fase e voltar a ser meu filho?
 			</Question>
+			<Back>
+				<p>Voltar para o Mapa</p>
+				<Link to="/empathymap">
+					<ToPreviousPage />
+				</Link>
+			</Back> 
 		</Body>
 	);
 }
@@ -48,6 +56,10 @@ const Title = styled.div`
 	font-weight: 800;
 	font-size: 30px;
 	line-height: 36px;
+
+	span{
+		color: #FEA6A6;
+	}
 `;
 
 const Question = styled.div`
@@ -86,4 +98,24 @@ const Text = styled.div`
 const Image = styled.div`
 	display: flex;
 	align-items: center;
+`;
+
+const Back = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: end;
+	padding-left: 80%;
+	margin-top: 50px;
+	padding-right: 40px;
+
+p{
+	font-weight: 800;
+	font-size: 25px;
+	line-height: 30px;
+}
+`;
+
+const ToPreviousPage = styled(FaPlay)`
+	font-size: 60px;
+	cursor: pointer;
 `;
