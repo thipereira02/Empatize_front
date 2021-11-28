@@ -57,7 +57,7 @@ const Button2 = styled.div`
     position: absolute;
     width: 90px;
     bottom: 250px;
-    right: calc(100vh - 11%);
+    right: calc(100vh - 25%);
     font-weight: 700;
     font-size: 24px;
     line-height: 29px;
@@ -87,7 +87,7 @@ const Button4 = styled.div`
     position: absolute;
     width: 90px;
     bottom: 250px;
-    left: calc(100vh - 9%);
+    left: calc(100vh - 23%);
     font-weight: 700;
     font-size: 24px;
     line-height: 29px;
