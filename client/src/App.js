@@ -26,7 +26,7 @@ function App(){
     .required("Senha é obrigatório"),
     confirmacaoSenha: yup
     .string()
-    .oneOf([yup.ref("confirmacaoSenha"), null], "As senhas não sao iguais")
+    .oneOf([yup.ref("password"), null], "As senhas não sao iguais")
   })
 
   return (
@@ -58,47 +58,41 @@ function App(){
       </Formik>
 
       <h1>Cadastro</h1>
-      <Formik initialValues={{}} 
-      onSubmit={RegisterQuandoClick} 
-      validationSchema={validacaoCadastro}>
+
+      <Formik initialValues={{}} onSubmit={RegisterQuandoClick} validationSchema={validacaoCadastro}>
           
           <Form className="login-form">
               <div className="login-form-group">
-                  <Field name="email" className="form-field" 
-                  placeholder="Email"/>
-
+                  <Field name="email" className="form-field" placeholder="Email"/>
                   <ErrorMessage
                   component="span"
                   name="email"
                   className="form-error"
                   />
-
               </div>
-
               <div className="login-form-group">
-                  <Field name="pasword" className="form-field" placeholder="senha"/>
+                  <Field name="password" className="form-field" placeholder="senha"/>
 
                   <ErrorMessage
                   component="span"
-                  name="pasword"
-                  className="password-error"
+                  name="password"
+                  className="form-error"
                   />
-
               </div>
               <div className="login-form-group">
-                  <Field name="confirmacaoSenha" className="form-field" placeholder="Confirme sua senha"/>
+                  <Field name="confirmacaoSenha" className="form-field" placeholder="senha"/>
 
                   <ErrorMessage
                   component="span"
                   name="confirmacaoSenha"
                   className="form-error"
                   />
-
               </div>
-              <button className="button" type="submit">Login</button>
+              <button className="button" type="submit">Registrar</button>
           </Form> 
 
       </Formik>
+   
       
       </div>
   )
