@@ -5,6 +5,7 @@ import GlobalStyle from "./layouts/GlobalStyles";
 import HomePage from "./pages/HomePage";
 import EmpathyMap from "./pages/EmpathyMap";
 import WhatDoYou from "./pages/WhatDoYou";
+import MainComponente from "./components/MainComponent";
 
 export default function App() {
 
@@ -12,6 +13,7 @@ export default function App() {
 		<>
 			<GlobalStyle />
 			<BrowserRouter>
+				<MainComponente	 />
 				<Switch>
 					<Route path="/" exact>
 						<HomePage />

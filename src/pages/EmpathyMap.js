@@ -45,13 +45,12 @@ const Body = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 120px;
 `;
 
 const Button1 = styled.div`
     position: absolute;
     width: 90px;
-    bottom: 380px;
+    bottom: 350px;
     font-weight: 700;
     font-size: 24px;
     line-height: 29px;

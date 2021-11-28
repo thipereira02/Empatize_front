@@ -35,10 +35,10 @@ seu chefe, impedindo sua promoção</p>
 				Quando você vai deixar essa fase e voltar a ser meu filho?
 			</Question>
 			<Back>
-				<p>Voltar para o Mapa</p>
 				<Link to="/empathymap">
 					<ToPreviousPage />
 				</Link>
+				<p>Voltar para o Mapa</p>
 			</Back> 
 		</Body>
 	);
@@ -48,7 +48,7 @@ const Body = styled.div`
     display: flex;
     flex-direction: column;
 	width: 90%;
-	margin: 140px auto 0 auto;
+	margin: 50px auto 0 auto;
 `;
 
 const Title = styled.div`
@@ -112,10 +112,12 @@ p{
 	font-weight: 800;
 	font-size: 25px;
 	line-height: 30px;
+	margin-left: 5px;
 }
 `;
 
 const ToPreviousPage = styled(FaPlay)`
 	font-size: 60px;
 	cursor: pointer;
+	transform: rotateY(180deg)
 `;
