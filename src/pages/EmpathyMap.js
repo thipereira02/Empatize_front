@@ -101,7 +101,7 @@ const Button4 = styled.div`
 const Box = styled.div`
     width: 490px;
     height: 191px;
-    border: 16px solid #DADADA;
+    border: 6px solid #DADADA;
     margin-top: 50px;
     display: flex;
 
@@ -110,7 +110,7 @@ const Box = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
-        border: 16px solid #DADADA;
+        border: 6px solid #DADADA;
         font-weight: 700;
         font-size: 24px;
         line-height: 29px;
