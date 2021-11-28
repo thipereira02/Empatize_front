@@ -25,6 +25,7 @@ const GlobalStyle = createGlobalStyle`
 		font-size: 100%;
 		font: inherit;
 		vertical-align: baseline;
+		font-family: 'Urbanist', sans-serif;
 	}
 	/* HTML5 display-role reset for older browsers */
 	article, aside, details, figcaption, figure, 
@@ -34,8 +35,8 @@ const GlobalStyle = createGlobalStyle`
 	body {
 		line-height: 1;
 		background-color: #000;
-		font-family: 'Roboto', sans-serif;
-		color: #FFF;
+		font-family: 'Urbanist', sans-serif;
+		color: #DADADA;
 	}
 	ol, ul {
 		list-style: none;
@@ -66,7 +67,7 @@ const GlobalStyle = createGlobalStyle`
 	* {
 		box-sizing: border-box;
 		outline: none;
-		font-family: 'Roboto', sans-serif;
+		font-family: 'Urbanist', sans-serif;
 	}
 `;
 
