@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { FaPlay } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function Persona() {
 	const [disabled, setDisabled] = useState(true);
@@ -33,7 +34,9 @@ Recentemente, após muitas tentativas, você conseguiu um emprego na sua área, 
 				:
 				<Next>
 					<p>Veja o Mapa de Empatia</p>
-					<ToNextPage />
+					<Link to="/empathymap">
+						<ToNextPage />
+					</Link>
 				</Next> 
 			}
 		</Body>
