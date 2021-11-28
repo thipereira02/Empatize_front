@@ -1,21 +1,31 @@
 import React from "react";
+import { useHistory } from "react-router";
 import styled from "styled-components";
 
 import map from "../assets/map.png";
 
 export default function EmpathyMap() {
+	const history = useHistory();
+
+	function goTo(path){
+		history.push({
+			pathname: "/whatdoyou",
+			state: {text: path}
+		});
+	}
+
 	return (
 		<Body>
-			<Button1>
+			<Button1 onClick={() => goTo("PENSA E SENTE")}>
                 PENSA SENTE
 			</Button1>
-			<Button2>
+			<Button2 onClick={() => goTo("VÊ")}>
                 VÊ
 			</Button2>
-			<Button3>
+			<Button3 onClick={() => goTo("FALA E FAZ")}>
                 FALA FAZ
 			</Button3>
-			<Button4>
+			<Button4 onClick={() => goTo("ESCUTA")}>
                 ESCUTA
 			</Button4>
 			<img src={map} alt="Mapa de empatia" />
