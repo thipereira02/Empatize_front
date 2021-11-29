@@ -1,19 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { MdLogout } from "react-icons/md";
 
+import persona from "../assets/unsplash_J1OScm_uHUQ.png";
 import image from "../assets/acessibilidade.png";
+import { Link } from "react-router-dom";
 
 export default function MainComponent() {
 	const [showMenu, setShowMenu] = useState(false);
+	const [logged, setLogged] = useState(false);
+	const user = localStorage.getItem("user");
+
+	useEffect(() => {
+		user && setLogged(true);
+	},[]);
 
 	return (
 		<>
 			<Header>
-				<h1>EMPATIZE</h1>
-				<div onClick={() => setShowMenu(!showMenu)}>
-
-				</div>
+				<Link to="/">
+					<h1>EMPATIZE</h1>
+				</Link>
+				{logged && 
+					<div onClick={() => setShowMenu(!showMenu)}>
+						<img src={persona} alt="Persona"></img>
+					</div>
+				}
 			</Header>
 			<Background display={showMenu} onClick={() => setShowMenu(!showMenu)} />
 			<DropDown top={showMenu}>
@@ -53,6 +65,11 @@ const Header = styled.div`
 		background: #CECECE;
 		border-radius: 50%;
 		cursor: pointer;
+	}
+
+	img{
+		width: 40px;
+		height: 40px;
 	}
 `;
 
