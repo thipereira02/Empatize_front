@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import GlobalStyle from "./layouts/GlobalStyles";
 import HomePage from "./pages/HomePage";
+import SignUp from "./pages/SignUp";
 
 export default function App() {
 
@@ -13,6 +14,9 @@ export default function App() {
 				<Switch>
 					<Route path="/" exact>
 						<HomePage />
+					</Route>
+					<Route path="/cadastro" exact>
+						<SignUp />
 					</Route>
 				</Switch>
 			</BrowserRouter>
