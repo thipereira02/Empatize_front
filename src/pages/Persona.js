@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { FaPlay } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
+import persona from "../assets/unsplash_J1OScm_uHUQ.png";
+
 export default function Persona() {
 	const [disabled, setDisabled] = useState(true);
 
@@ -16,7 +18,7 @@ export default function Persona() {
 			</Title>
 			{disabled ?
 				<div>
-					<img src="https://img.freepik.com/fotos-gratis/imagem-aproximada-em-tons-de-cinza-de-uma-aguia-careca-americana-em-um-fundo-escuro_181624-31795.jpg?size=626&ext=jpg" alt="Persona" />
+					<img src={persona} alt="Persona" />
 					<Action onClick={() => setDisabled(false)} />
 				</div>
 				:
