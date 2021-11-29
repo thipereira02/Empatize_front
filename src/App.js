@@ -10,6 +10,7 @@ import MainComponente from "./components/MainComponent";
 import SignUp from "./pages/SignUp";
 
 export default function App() {
+	
 
 	return (
 		<>
