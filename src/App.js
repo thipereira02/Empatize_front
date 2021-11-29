@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import GlobalStyle from "./layouts/GlobalStyles";
 import HomePage from "./pages/HomePage";
+import Persona from "./pages/Persona";
 import EmpathyMap from "./pages/EmpathyMap";
 import WhatDoYou from "./pages/WhatDoYou";
 import MainComponente from "./components/MainComponent";
@@ -21,6 +22,9 @@ export default function App() {
 					</Route>
 					<Route path="/cadastro" exact>
 						<SignUp />
+					</Route>
+					<Route path="/persona/:personaId" exact>
+						<Persona />
 					</Route>
 					<Route path="/empathymap/:personaId" exact>
 						<EmpathyMap />
