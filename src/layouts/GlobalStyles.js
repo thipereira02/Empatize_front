@@ -25,6 +25,7 @@ const GlobalStyle = createGlobalStyle`
 		font-size: 100%;
 		font: inherit;
 		vertical-align: baseline;
+		font-family: 'Urbanist', sans-serif;
 	}
 	/* HTML5 display-role reset for older browsers */
 	article, aside, details, figcaption, figure, 
@@ -66,7 +67,7 @@ const GlobalStyle = createGlobalStyle`
 	* {
 		box-sizing: border-box;
 		outline: none;
-		font-family: 'Roboto', sans-serif;
+		font-family: 'Urbanist', sans-serif;
 	}
 `;
 
