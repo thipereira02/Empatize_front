@@ -1,5 +1,4 @@
 import React from 'react';
-import {useState} from 'react';
 
 export const HomePage = () => {
     
@@ -16,9 +15,6 @@ export const HomePage = () => {
 
            <button onClick={goToLogin()}>LOGIN</button>
        </div>
-
-        
-
         </>
     )
 
