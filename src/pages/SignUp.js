@@ -128,7 +128,8 @@ const Title = styled.div`
     font-weight: 800;
     font-size: 25px;
     line-height: 30px;
-    margin-bottom: 90px;
+    padding-left: 140px;
+    margin-bottom: -80px;
 `;
 
 const Box = styled.div`
