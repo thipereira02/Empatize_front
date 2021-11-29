@@ -9,6 +9,7 @@ import EmpathyMap from "./pages/EmpathyMap";
 import WhatDoYou from "./pages/WhatDoYou";
 import MainComponente from "./components/MainComponent";
 import SignUp from "./pages/SignUp";
+import Login from "./pages/Login";
 
 export default function App() {
 	const [userData, setUserData] = useState(JSON.parse(localStorage.getItem("user")));
@@ -25,6 +26,9 @@ export default function App() {
 						</Route>
 						<Route path="/cadastro" exact>
 							<SignUp />
+						</Route>
+						<Route path="/login" exact>
+							<Login />
 						</Route>
 						<Route path="/persona/:personaId" exact>
 							<Persona />
