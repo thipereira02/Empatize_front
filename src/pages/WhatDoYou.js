@@ -4,6 +4,8 @@ import styled from "styled-components";
 import { FaPlay } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
+import persona from "../assets/unsplash_J1OScm_uHUQ.png";
+
 export default function WhatDoYou() {
 	const location = useLocation();
 	const page = location.state.text;
@@ -23,7 +25,7 @@ export default function WhatDoYou() {
 seu chefe, sobre o projeto que você desenvolveu</p>
 				</Text>
 				<Image>
-					<img src="https://static8.depositphotos.com/1003924/886/i/600/depositphotos_8868243-stock-photo-spectrum-multicolored-eye-macro.jpg" alt="Persona" />
+					<img src={persona} alt="Persona" />
 				</Image>
 				<Text>
 					<p>É chamada pelo nome morto.</p>
@@ -35,7 +37,7 @@ seu chefe, impedindo sua promoção</p>
 				Quando você vai deixar essa fase e voltar a ser meu filho?
 			</Question>
 			<Back>
-				<Link to="/empathymap">
+				<Link to="/empathymap/1">
 					<ToPreviousPage />
 				</Link>
 				<p>Voltar para o Mapa</p>

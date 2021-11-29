@@ -23,7 +23,7 @@ export default function Persona() {
 				</div>
 				:
 				<Text>
-					<img src="https://img.freepik.com/fotos-gratis/imagem-aproximada-em-tons-de-cinza-de-uma-aguia-careca-americana-em-um-fundo-escuro_181624-31795.jpg?size=626&ext=jpg" alt="Persona" />
+					<img src={persona} alt="Persona" />
 					<div>
 						<h1>Luana</h1>
 						<p>Você tem 24 anos e é uma mulher trans.
@@ -36,7 +36,7 @@ Recentemente, após muitas tentativas, você conseguiu um emprego na sua área, 
 				:
 				<Next>
 					<p>Veja o Mapa de Empatia</p>
-					<Link to="/empathymap">
+					<Link to="/empathymap/1">
 						<ToNextPage />
 					</Link>
 				</Next> 

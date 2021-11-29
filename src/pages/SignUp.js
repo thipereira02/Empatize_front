@@ -2,21 +2,36 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { FaFacebook } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
+import { registration } from "../services/server";
+import { useHistory } from "react-router";
 
 export default function SignUp() {
+	const history = useHistory();
 	const [loading, setLoading] = useState(false);
 	const [name, setName] = useState("");
-	const [surname, setSurname] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [company, setCompany] = useState("");
 	const [position, setPosition] = useState("");
-	const [birthDate, setBirthDate] = useState("");
+	const [photo, setPhoto] = useState("");
+	const [error, setError] = useState("");
 
 	function signUp(e) {
 		e.preventDefault();
 		setLoading(true);
+
+		const body = {name, email, password, confirmPassword, company, position, photo};
+		
+		const req = registration(body);
+		req.then(() => {
+			alert("Cadastro realizado com sucesso!");
+			history.push("/login");
+		});
+		req.catch(() => {
+			setError("Dados inválidos. Tente novamente.");
+			setLoading(false);
+		});
 	}
 
 	return (
@@ -24,27 +39,16 @@ export default function SignUp() {
 			<Title>CRIE SUA CONTA</Title>
 			<Body>
 				<Box>
-					<form onSubmit={signUp}>
-						<div>
-							<InputName 
-								type="text" 
-								placeholder="Nome" 
-								value={name} 
-								onChange={e => setName(e.target.value)}
-								onInvalid={e => e.target.setCustomValidity("Você deve inserir um nome aqui")} 
-								onInput={e => e.target.setCustomValidity("")}
-								required
-							/>
-							<InputSurname 
-								type="text" 
-								placeholder="Sobrenome" 
-								value={surname} 
-								onChange={e => setSurname(e.target.value)}
-								onInvalid={e => e.target.setCustomValidity("Você deve inserir um sobrenome aqui")} 
-								onInput={e => e.target.setCustomValidity("")}
-								required
-							/>
-						</div>
+					<form onSubmit={signUp}>				
+						<Input 
+							type="text" 
+							placeholder="Nome" 
+							value={name} 
+							onChange={e => setName(e.target.value)}
+							onInvalid={e => e.target.setCustomValidity("Você deve inserir um nome aqui")} 
+							onInput={e => e.target.setCustomValidity("")}
+							required
+						/>
 						<Input 
 							type="email" 
 							placeholder="E-mail" 
@@ -88,15 +92,18 @@ export default function SignUp() {
 							onInvalid={e => e.target.setCustomValidity("Você deve inserir seu cargo aqui")} 
 							onInput={e => e.target.setCustomValidity("")}
 						/>
-						<InputBirthDate
-							type="date" 
-							placeholder="Data de nascimento" 
-							value={birthDate} 
-							onChange={e => setBirthDate(e.target.value)}
+						<Input
+							type="url" 
+							placeholder="Foto" 
+							value={photo} 
+							onChange={e => setPhoto(e.target.value)}
 							onInvalid={e => e.target.setCustomValidity("Selecione sua data de nascimento")} 
 							onInput={e => e.target.setCustomValidity("")}
 							required
 						/>
+						{error && 
+                            <Error>{error}</Error>
+						}
 						<Button type="submit" disabled={loading} >
                             Criar conta
 						</Button>
@@ -167,61 +174,6 @@ const Input = styled.input`
     }
 `;
 
-const InputName = styled.input`
-    padding: 16px;
-    border: 1px solid ${props => props.invalid ? "#DC3545" : "#CCC"};
-    background-color: ${props => props.invalid ? "#DC3545" : "#FFF"};
-    border-radius: 20px;
-    margin-bottom: 8px;
-    width: 164px;
-    height: 51px;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 22px;
-
-    ::placeholder{
-        font-size: 20px;
-        color: #60484866;
-    }
-`;
-
-const InputSurname = styled.input`
-    padding: 16px;
-    border: 1px solid ${props => props.invalid ? "#DC3545" : "#CCC"};
-    background-color: ${props => props.invalid ? "#DC3545" : "#FFF"};
-    border-radius: 20px;
-    margin-bottom: 8px;
-    width: 228px;
-    height: 51px;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 22px;
-    margin-left: 8px;
-
-    ::placeholder{
-        font-size: 20px;
-        color: #60484866;
-    }
-`;
-
-const InputBirthDate = styled.input`
-    padding: 16px;
-    border: 1px solid ${props => props.invalid ? "#DC3545" : "#CCC"};
-    background-color: ${props => props.invalid ? "#DC3545" : "#FFF"};
-    border-radius: 20px;
-    margin-bottom: 8px;
-    width: 259px;
-    height: 51px;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 22px;
-
-    ::placeholder{
-        font-size: 20px;
-        color: #60484866;
-    }
-`;
-
 const Button = styled.button`
     color: #000;
     opacity: ${props => props.disabled ? "0.7" : "1"};
@@ -268,4 +220,15 @@ const GooButton = styled.button`
     font-size: 18px;
     font-weight: 900;
     cursor: pointer;
+`;
+
+const Error = styled.div`
+  color: #D8000C;
+  background-color: #FFBABA;
+  background-image: url('https://i.imgur.com/GnyDvKN.png');
+  border: 1px solid;
+  margin: 10px 0px;
+  padding: 15px 10px 15px 50px;
+  background-repeat: no-repeat;
+  background-position: 10px center;
 `;

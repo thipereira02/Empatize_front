@@ -1,17 +1,38 @@
-import React, { useState } from "react";
+import React, { useContext, useState, useHistory } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { FaFacebook } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
+import { signInUser } from "../services/server";
+import UserContext from "../contexts/UserContext";
 
 export default function Login() {
+	const history = useHistory();
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [loading, setLoading] = useState(false);
+	const [error, setError] = useState("");
+	const { setUserData } = useContext(UserContext);
 
 	function signIn(e) {
 		e.preventDefault();
 		setLoading(true);
+
+		const body = {email, password};
+
+		const req = signInUser(body);
+		req.then(res => {
+			setUserData({
+				token: res.data.token,
+				name: res.data.name
+			});
+			localStorage.setItem("user", JSON.stringify(res.data));
+			history.push("/");
+		});
+		req.catch(() => {
+			setError("Email e/ou senha inválidos");
+			setLoading(false);
+		});
 	}
 
 	return (
@@ -19,7 +40,7 @@ export default function Login() {
 			<Title>
                 ACESSE SUA PÁGINA
 			</Title>
-			<Link to="/signup">
+			<Link to="/cadastro">
 				<p>Ainda não tem conta? Crie aqui</p>
 			</Link>
 			<Box>
@@ -42,6 +63,11 @@ export default function Login() {
 						onInput={e => e.target.setCustomValidity("")}
 						required
 					/>
+					{error && 
+						<Error>
+							{error}
+						</Error>
+					}
 					<Button type="submit" disabled={loading}>
                         LOGIN
 					</Button>
@@ -163,4 +189,15 @@ const GooButton = styled.button`
     font-size: 18px;
     font-weight: 900;
     cursor: pointer;
+`;
+
+const Error = styled.div`
+  color: #D8000C;
+  background-color: #FFBABA;
+  background-image: url('https://i.imgur.com/GnyDvKN.png');
+  border: 1px solid;
+  margin: 10px 0px;
+  padding: 15px 10px 15px 50px;
+  background-repeat: no-repeat;
+  background-position: 10px center;
 `;
